@@ -36,10 +36,22 @@ public class LoginStepDefs {
     @Then("the user should be able to login")
     public void the_user_should_be_able_to_login() {
         BrowserUtils.waitFor(3);
-        String actualTitle=Driver.get().getTitle();
-        Assert.assertEquals("Dashboard",actualTitle);
+        String actualTitle = Driver.get().getTitle();
+        Assert.assertEquals("Dashboard", actualTitle);
+    }
+        @When("the user enter the store manager information")
+        public void the_user_enter_the_store_manager_information() {
+
+
+        String username=ConfigurationReader.get("store_manager_username");
+        String password=ConfigurationReader.get("store_manager_password");
+
+        LoginPage loginPage=new LoginPage();
+        loginPage.login(username,password);
+
+        }
 
 
     }
 
-}
+
