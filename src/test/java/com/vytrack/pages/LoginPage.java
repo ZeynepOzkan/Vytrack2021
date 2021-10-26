@@ -16,7 +16,7 @@ public class LoginPage {
     @FindBy(id="prependedInput2")
     public WebElement password;
 
-    @FindBy(css="button#_submit")
+    @FindBy(name="_submit")
     public WebElement submit;
 
     public void login(String userNameStr, String passwordStr){
