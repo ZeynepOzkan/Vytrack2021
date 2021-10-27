@@ -11,13 +11,7 @@ import org.junit.Assert;
 
 public class LoginStepDefs {
 
-    @Given("the user is on the login page")
-    public void the_user_is_on_the_login_page() {
 
-        String url= ConfigurationReader.get("url");
-        Driver.get().get(url);
-
-    }
 
 
     @When("the user enter the driver information")
@@ -33,26 +27,37 @@ public class LoginStepDefs {
 
 
 
-    @Then("the user should be able to login")
-    public void the_user_should_be_able_to_login() {
-        BrowserUtils.waitFor(3);
-        String actualTitle=Driver.get().getTitle();
-        Assert.assertEquals("Dashboard",actualTitle);
+
+        @When("the user enter the store manager information")
+        public void the_user_enter_the_store_manager_information() {
 
 
-    }
+        String username=ConfigurationReader.get("store_manager_username");
+        String password=ConfigurationReader.get("store_manager_password");
+
+        LoginPage loginPage=new LoginPage();
+        loginPage.login(username,password);
+
+        }
 
     @When("the user enter the sales manager information")
     public void the_user_enter_the_sales_manager_information() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String username=ConfigurationReader.get("sales_manager_username");
+        String password=ConfigurationReader.get("sales_manager_password");
+
+        LoginPage loginPage=new LoginPage();
+        loginPage.login(username,password);
     }
 
-    @When("the user enter the store manager information")
-    public void the_user_enter_the_store_manager_information() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        //yeni ekleme
+
     }
 
 
-}
+
+
+
+
+
+
+
