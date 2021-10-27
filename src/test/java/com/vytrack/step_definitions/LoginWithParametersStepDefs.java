@@ -4,6 +4,7 @@ import com.vytrack.pages.LoginPage;
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,9 +12,8 @@ import org.junit.Assert;
 
 public class LoginWithParametersStepDefs {
 
-
-    @Given("the user is on the login page")
-    public void the_user_is_on_the_login_page() {
+    @Given("the user logged in as {string}")
+    public void theUserLoggedInAs(String userType) {
 
         String url = ConfigurationReader.get("url");
         Driver.get().get(url);
@@ -34,7 +34,7 @@ public class LoginWithParametersStepDefs {
         Assert.assertEquals("Dashboard", actualTitle);
     }
 
-    @Then("the title contains {string}")
+    @And("the title contains {string}")
     public void the_title_contains(String expectedTitle) {
 
 
@@ -42,5 +42,9 @@ public class LoginWithParametersStepDefs {
         BrowserUtils.waitFor(2);
         Assert.assertTrue(Driver.get().getTitle().contains(expectedTitle));
 
+
     }
-}
+
+    }
+
+
