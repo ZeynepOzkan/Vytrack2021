@@ -32,5 +32,21 @@ public class LoginStepDefs {
     }
 
 
+    @When("the user enter the store manager information")
+    public void theUserEnterTheStoreManagerInformation() {
+        String username=ConfigurationReader.get("store_manager_username");
+        String password=ConfigurationReader.get("store_manager_password");
 
+        LoginPage loginPage=new LoginPage();
+        loginPage.login(username,password);
+    }
+
+    @When("the user enter the sales manager information")
+    public void theUserEnterTheSalesManagerInformation() {
+        String username=ConfigurationReader.get("sales_manager_username");
+        String password=ConfigurationReader.get("sales_manager_password");
+
+        LoginPage loginPage=new LoginPage();
+        loginPage.login(username,password);
+    }
 }
